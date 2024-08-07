@@ -33,6 +33,13 @@ docker --version
 ```
 <img width="1000" alt="image" src="https://github.com/user-attachments/assets/245e553c-5c39-4b35-9cbc-e74727e63457">
 
+## Docker 명령어
+- image build (Dockerfile -> Image)
+```
+cd /path/to/Dockerfile_folder/
+sudo docker build -t image_name .
+``` 
+
 # docker swarm 구성
 - docker swarm은 따로 설치할 필요가 없음. (docker 설치시 함께 설치됨)
 
