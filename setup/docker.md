@@ -35,6 +35,7 @@ docker --version
 
 # docker swarm 구성
 - docker swarm은 따로 설치할 필요가 없음. (docker 설치시 함께 설치됨)
+
 ## 네트워크 구성 
 - 한개의 서버에서만 init을 쓰고, 다른 서버는 출력값을 복사 붙여넣기 해주기
 - 이유 : 한개만 manager(leader 로 사용하고 나머지는 다 worker로 사용해주기 위해서 
@@ -60,6 +61,8 @@ sudo sudo docker swarm join-token manager
 # server2, server3
 sudo docker swarm join --token ~~~~
 ```
+
+
 
 ## node 확인
 - manager node에서만 명령어 실행 가능
