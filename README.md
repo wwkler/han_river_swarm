@@ -10,7 +10,7 @@
 |신윤재|서영수|이연호|김영우|박윤수|정지석|
 |--|--|--|--|--|--|
 |<img width="100" alt="image" src="https://github.com/user-attachments/assets/711bd24b-02b0-4515-8c42-feb87f47ff33">|<img width="100" alt="image" src="https://github.com/user-attachments/assets/9ab53d0c-6ba4-45b9-aaef-032918bac885">|<img width="100" alt="image" src="https://github.com/user-attachments/assets/31148c90-50b8-4b01-9b02-0845e9226275">|<img width="100" alt="image" src="https://github.com/user-attachments/assets/7db3eda9-319c-4fd4-aa87-023d82c65560">|<img width="100" alt="image" src="https://github.com/user-attachments/assets/48dab61e-66ca-4af0-9f8f-91a81782109c">|<img width="100" alt="image" src="https://github.com/user-attachments/assets/44160bab-2c35-4576-a4e3-ada84714a7ad">|
-|[yoonjaeo](https://github.com/yoonjaeo)|--|[CUAGAIN-95](https://github.com/CUAGAIN-95)|[wwkler](https://github.com/wwkler)|--|[jiseok6843](https://github.com/jiseok6843)|
+|[yoonjaeo](https://github.com/yoonjaeo)|--|[CUAGAIN-95](https://github.com/CUAGAIN-95)|[wwkler](https://github.com/wwkler)|[dnlpys](https://github.com/dnlpys)|[jiseok6843](https://github.com/jiseok6843)|
 
 
 ## :bar_chart: 사용 데이터
