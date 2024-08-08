@@ -51,11 +51,9 @@
 
 #### 개발 환경 및 사용 이유
 - 해당 데이터에 가장 적합한 파이프라인를 찾기 위해 여러 아키텍쳐 실험 및 선정
-  - [Airflow](architecture/airflow.md)
-  - [Kafka](architechture/kafka.md)
-  - [DB](architechture/db.md)
-  - [ELK Stack](architecture/elk_stack.md)
-  - [Docker & Docker Swarm](architecture/docker.md)
+  - [Airflow](architecture/airflow)
+  - [Kafka](architechture/kafka)
+  - [ELK Stack](architecture/kafka_consumer)
 
 #### 최종 아키텍쳐 구축 방법 확인
 - [Docker 설치 및 세팅](setup/docker.md)
