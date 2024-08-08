@@ -59,7 +59,7 @@
 #### 최종 아키텍쳐 구축 방법 확인
 - [Docker 설치 및 세팅](setup/docker.md)
 - [ubuntu 세팅](setup/ubuntu.md)
-- [Docker로 pipeline 한꺼번에 띄우는 방법](setting/README.md) 
+- [Docker swarm으로 pipeline 한꺼번에 띄우는 방법](setting/README.md) 
 
 
 ## :video_camera: 시연 영상
