@@ -45,9 +45,9 @@ services:
   datalake:
     depends_on:
       - kafka
-    image: datalake
+    image: datalake:latest
     volumes:
-      - /home/ubuntu/docker/datalake/data:/home/datalake
+      - ./datalake/data:/home/datalake
     command:
       - python
       - /home/datalake_con.py

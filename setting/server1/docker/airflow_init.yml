@@ -3,7 +3,7 @@ x-airflow-common: &airflow-common
   # In order to add custom dependencies or upgrade provider packages you can use your extended image.
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
-  image: airflow_costome:latest
+  image: airflow_custom:latest
   # build: .
   #  env_file:
   #  - env
@@ -33,6 +33,7 @@ x-airflow-common: &airflow-common
     - ./airflow/logs:/opt/airflow/logs
     - ./airflow/config:/opt/airflow/config
     - ./airflow/plugins:/opt/airflow/plugins
+    - ./airflow/temp:/opt/airflow/temp
   user: "0:0"
 
 
