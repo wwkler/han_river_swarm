@@ -1,14 +1,14 @@
-# WORKFLOW 
+# WORKFLOW
 # 목표 : 서울시 실시간 도시 데이터를 API로 호출해서 받은 데이터를 전처리 한 후 Kafka Broker에 전송한다.
 # API 설명 : 서울시 실시간 도시데이터는 실시간 인구현황, 도시소통현황, 주차장 현황, 지하철 실시간 도착 현황, 버스정류소 현황, 사고통제 현황, 따릉이 현황, 전기차 충전소 현황, 문화행사 현황을 종합적으로 제공한다.
 
-# 데이터 수집은 다음과 같이 진행된다. 
-## 장소명을 이용해서 API를 호출하는 구조 
-## 장소는 115곳을 지원하므로 이에 115곳에 대한 장소에 대한 실시간 도시 데이터를 "동시"에 호출하고 받는다. 
-## results에는 115곳에 대한 실시간 도시 데이터가 있는데 
-## for문을 돌려서 1곳에 대한 실시간 도시 데이터를 받아서 Kafka Broker에 적재한다.
+# 데이터 수집은 다음과 같이 진행된다.
+# 장소명을 이용해서 API를 호출하는 구조
+# 장소는 115곳을 지원하므로 이에 115곳에 대한 장소에 대한 실시간 도시 데이터를 "동시"에 호출하고 받는다.
+# results에는 115곳에 대한 실시간 도시 데이터가 있는데
+# for문을 돌려서 1곳에 대한 실시간 도시 데이터를 받아서 Kafka Broker에 적재한다.
 
-# Library 
+# Library
 import aiohttp
 import asyncio
 import json
@@ -16,36 +16,39 @@ import time
 from kafka import KafkaProducer
 
 # 특정 도시의 실시간 도시 데이터를 가져오는 함수 (ex. 구로역의 실시간 도시 데이터를 가져온다. 동대문역의 실시간 도시 데이터를 가져온다.)
+
+
 async def get_specific_city_data(session,
                                  area_nm,
-                                 key, 
-                                 type_, 
-                                 start_index, 
+                                 key,
+                                 type_,
+                                 start_index,
                                  end_index):
-    # 호출할 API URL 설정 
-    url = f'http://openapi.seoul.go.kr:8088/{key}/{type_}/citydata/{start_index}/{end_index}/{area_nm}'
-    
-    # API URL를 호출한다. 
+    # 호출할 API URL 설정
+    url = f'http://openapi.seoul.go.kr:8088/{key}/{
+        type_}/citydata/{start_index}/{end_index}/{area_nm}'
+
+    # API URL를 호출한다.
     try:
         async with session.get(url) as response:
-            # API URL를 호출하면서 상태 코드가 200인지 확인한다. 
+            # API URL를 호출하면서 상태 코드가 200인지 확인한다.
             if response.status == 200:
-                # 반환된 데이터를 확인한다. 
+                # 반환된 데이터를 확인한다.
                 json_ob = await response.json()
-                
-                # 데이터를 확인했는데 "정상 처리"된 데이터에 대한 로직 처리 
+
+                # 데이터를 확인했는데 "정상 처리"된 데이터에 대한 로직 처리
                 if json_ob['RESULT']['RESULT.CODE'] == 'INFO-000':
                     return area_nm, json_ob
-                
-                # 데이터를 확인했는데 "정상 처리"된 데이터가 아니면 데이터가 들어오지 않도록 한다. 
+
+                # 데이터를 확인했는데 "정상 처리"된 데이터가 아니면 데이터가 들어오지 않도록 한다.
                 else:
                     return area_nm, None
-                
-            # API URL를 호출하면서 상태 코드가 200이 아니면 해당 도시에 대한 데이터는 누락 시킨다. 
+
+            # API URL를 호출하면서 상태 코드가 200이 아니면 해당 도시에 대한 데이터는 누락 시킨다.
             else:
                 return area_nm, None
-        
-    # API URL를 호출하는 과정에서 문제가 생기면 해당 도시에 대한 실시간 도시 데이터는 누락 시킨다. 
+
+    # API URL를 호출하는 과정에서 문제가 생기면 해당 도시에 대한 실시간 도시 데이터는 누락 시킨다.
     # 그래서 json_ob가 None으로 치환되서 return 된다.
     except aiohttp.ClientError as e:
         # print(f"Client error: {e}")
@@ -56,14 +59,14 @@ async def get_specific_city_data(session,
     except Exception as e:
         # print(f"An error occurred: {e}")
         return area_nm, None
-    
+
 
 # 서울시 실시간 도시 데이터를 비동기로 가져오는 메인 함수
 async def get_seoul_realTime_data():
-    # 프로그램이 시작됐다는 것을 알린다. 
+    # 프로그램이 시작됐다는 것을 알린다.
     start_time = time.time()
-    
-    # API를 호출하기 위한 세팅 
+
+    # API를 호출하기 위한 세팅
     key = 'my_api'
     type_ = 'json'
     start_index = 1
@@ -185,21 +188,21 @@ async def get_seoul_realTime_data():
         "북창동 먹자골목",
         "남대문시장"
     ]
-    
+
     async with aiohttp.ClientSession() as session:
-        # 특정 도시에 대해서 API를 비동기적으로 호출하고 
+        # 특정 도시에 대해서 API를 비동기적으로 호출하고
         # 그에 대한 결과를 asyncio.gather를 이용해서 모은다.
         tasks = [get_specific_city_data(session,
-                                        area_nm, 
+                                        area_nm,
                                         key,
                                         type_,
                                         start_index,
-                                        end_index) 
+                                        end_index)
                  for area_nm in area_nm_list]
         results = await asyncio.gather(*tasks)
-        
+
         # results에는 115개의 실시간 도시 데이터가 있다.
-        # for문을 돌리면 1개의 실시간 도시 데이터가 나오고 
+        # for문을 돌리면 1개의 실시간 도시 데이터가 나오고
         # 그것을 바탕으로 Kafka Topic 명을 가지고 Kafka Produce 할 수 있도록 한다.
         for area_nm, json_ob in results:
             if json_ob is not None:
@@ -209,38 +212,42 @@ async def get_seoul_realTime_data():
                 print(f'{area_nm}에 대한 실시간 도시 데이터를 Kafka Produce 합니다...')
                 print()
                 print()
-    
+
                 # 실시간 도시데이터를 Kafka Producer 코드를 이용해 Kafka Broker에 적재하는 함수를 실행한다.
                 make_kafka_producer(json_ob)
-                
+
             else:
                 print()
                 print()
                 print(f"------------- 실패 : {area_nm}  -------------")
-                print(f"{area_nm}에 대해서 실시간 도시 데이터를 수집하는 과정에서 문제가 생겨서 Kafka Produce 하지 못합니다...")
+                print(
+                    f"{area_nm}에 대해서 실시간 도시 데이터를 수집하는 과정에서 문제가 생겨서 Kafka Produce 하지 못합니다...")
                 print()
                 print()
-                
-                
-    # 프로그램 실행 시간이 총 얼마나 걸리는지 확인한다. 
+
+    # 프로그램 실행 시간이 총 얼마나 걸리는지 확인한다.
     end_time = time.time()
-    print(f"API 데이터 수집 -> Kafka Broker 적재 완료까지 Total execution time: {end_time - start_time:.2f} seconds")
+    print(f"API 데이터 수집 -> Kafka Broker 적재 완료까지 Total execution time: {
+          end_time - start_time:.2f} seconds")
     print()
     print()
 
 # 실시간 도시 데이터를 Kafka Producer 코드를 이용해 Kafka Broker에 적재하는 함수
+
+
 def make_kafka_producer(json_ob):
-    # kafka information 
-    broker1 = '172.31.1.105:9092'
-    broker2 = '172.31.3.122:9092'
-    broker3 = '172.31.9.214:9092'
-    
+    # kafka information
+    broker1 = 'kafka_broker_server1_ip:9092'
+    broker2 = 'kafka_broker_server2_ip:9092'
+    broker3 = 'kafka_broker_server3_ip:9092'
+
     kafka_bootstrap_servers = [broker1, broker2, broker3]
-    kafka_topic = 'testtopic'
-    
+    kafka_topic = 'kafka_topic'
+
     producer = KafkaProducer(bootstrap_servers=kafka_bootstrap_servers)
     producer.send(kafka_topic,  value=json.dumps(json_ob).encode('utf-8'))
     producer.flush()
-    
-# 이벤트 루프를 실행하여 비동기 함수 호출 
+
+
+# 이벤트 루프를 실행하여 비동기 함수 호출
 asyncio.run(get_seoul_realTime_data())

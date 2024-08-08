@@ -2,6 +2,7 @@
 # server3
 # logstash elasticsearch kibana
 #==============================================================================
+services:
   elasticsearch:
     image : docker.elastic.co/elasticsearch/elasticsearch:8.14.1
     volumes:
