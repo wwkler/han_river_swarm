@@ -58,3 +58,20 @@ services:
       placement:
         constraints:
           - node.hostname == server2
+  
+  api2postgre:
+    depends_on:
+      - kafka
+    image: api_to_db:2
+    volumes:
+      - ./postgresql:/home
+    command:
+      - python
+      - /home/seoul_api_to_db.py
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == server2
