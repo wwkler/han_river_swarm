@@ -26,7 +26,6 @@ vi authorized_keys
 
 #### config 파일 설정
 - username부분은 따로 수정해야함
-- pub key 맨 뒤에 명시되어 있음 
 ```
 Host server1
   HostName server1
