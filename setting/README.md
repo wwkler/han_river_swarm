@@ -21,7 +21,7 @@ mkdir -p kibana/config
 ## 파일 생성 
 - 폴더에 존재하는 서버에 맞게 각각 파일을 생성
   - [server1](./server1)
-  - [serveer2](./server2)
+  - [server2](./server2)
   - [server3](./server3) 
 
 |server1|server2|server3|
