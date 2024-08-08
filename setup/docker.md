@@ -1,3 +1,21 @@
+<img width="500" alt="image"  src= "https://github.com/user-attachments/assets/e1a77045-ac90-45f5-bf32-7668307d792a">
+
+
+# Docker & Docker Swarm 사용 이유 
+- 도커
+  - 버전관리 용이
+  - 컨테이너 관리의 편리성
+  - 일관된 개발 환경
+  - 프로그램 격리성 제공
+- Docker Swarm
+  - 한꺼번에 도커 컨테이너들을 확인하고 관리하기 쉬움
+  - Cluster 구성에 용이
+  - 따로 설치할 필요가 없음
+  - 컨테이너의 상태를 확인하여 죽게되면 다시 띄워주는 등 자동적으로 관리해줌
+  - 소규모 컨테이너들을 관리하게 편리함
+  - 한개의 yml 파일을 통해서 다양한 서버에 container를 한번에 띄울 수 있음
+ 
+
 # Docker 설치 
 
 - 모든 서버에서 실행 (server1, server2, server3)
