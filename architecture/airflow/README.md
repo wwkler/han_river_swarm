@@ -10,4 +10,11 @@
 |<img width="537" alt="image" src="https://github.com/user-attachments/assets/b606d6dc-2527-4576-8890-80da6e2a496c">|<img width="533" alt="image" src="https://github.com/user-attachments/assets/69b2609b-becf-4263-b3c0-7076fa2f8c3a">|
 
 
+## Crontab 
+- 크론탭 설정
+```
+crontab -e
 
+---
+*/1 * * * * /bin/bash /home/ubuntu/test/test.sh >> /home/ubuntu/test/log.log 2>&1 &
+```
