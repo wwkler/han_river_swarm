@@ -54,6 +54,7 @@
   - [Airflow](architecture/airflow)
   - [Kafka](architechture/kafka)
   - [ELK Stack](architecture/kafka_consumer)
+  - [Docker & Swarm](setup/docker.md)
 
 #### 최종 아키텍쳐 구축 방법 확인
 - [Docker 설치 및 세팅](setup/docker.md)
