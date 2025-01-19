@@ -1,9 +1,16 @@
 # 너랑 한강갈래 :relaxed:
 
+## 📚Notion 상세 정보 보기
+[Notion Link](https://delicate-trouble-d06.notion.site/1775bfcbe047802fb59fe4a33b6cf019)
+
+<br>
+
 ## 프로젝트 개요 및 목표 
 
 - 서울 실시간 도시 데이터를 활용한 한강 공원 데이터 파이프라인 구축
 - 한강 공원 실시간 현황 데이터를 보기 쉽게 시각화
+
+<br>
 
 ## 팀원 
 
@@ -13,10 +20,14 @@
 |[yoonjaeo](https://github.com/yoonjaeo)|[SeoYeong-su](https://github.com/SeoYeong-su)|[CUAGAIN-95](https://github.com/CUAGAIN-95)|[wwkler](https://github.com/wwkler)|[dnlpys](https://github.com/dnlpys)|[jiseok6843](https://github.com/jiseok6843)|
 
 
+<br>
+
 ## :bar_chart: 사용 데이터
 - 서울 실시간 도시데이터 API 활용
   - https://data.seoul.go.kr/dataVisual/seoul/guide.do
-  - API Key 발급 필요 
+  - API Key 발급 필요
+
+<br>
 
 ## :low_brightness: 요구사항 확인 및 분석
 - 수집
@@ -38,12 +49,16 @@
   - 플렛폼들의 서비스를 모니터링 하고 시스템 가용성 유지
   - 일관된 개발환경 사용
 
+<br>
+
 ## :desktop_computer: 개발환경 설정
 - AWS EC2 활용
   - 총 3개의 서버
   - Image : Ubuntu 24.04 LTS
   - Instance Type : t2.xlarge
   - Storage : 100GB
+
+<br>
 
 ## 📐 최종 아키텍쳐 
 <img width="675" alt="image" src="https://github.com/user-attachments/assets/a96a7350-7b16-4bbe-b1b6-7bc18ea94161">
@@ -60,6 +75,8 @@
 - [ubuntu 세팅](setup/ubuntu.md)
 - [Docker swarm으로 pipeline 한꺼번에 띄우는 방법](setting/README.md) 
 
+
+<br>
 
 ## :video_camera: 시연 영상
 - Server3에서 Docker swarm을 이용하여 각 서버에 모든 Container를 띄움
@@ -80,5 +97,3 @@
 
 - 원하는 한강공원 Filtering
 ![image](https://github.com/user-attachments/assets/7a3e3a2b-e232-47bd-a6a7-b716f3c0cfc0)
-
-## :mag_right: 트러블 슈팅 관련 내용 
